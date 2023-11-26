@@ -31,7 +31,8 @@ If you deploy it to any cloud platforms, please send us instructions & relevant 
 
 ## Diagram
 
-![Infra Diagram](https://drive.google.com/file/d/1diEgj2YbR0TbH4Ph4ofbaARq_gW2W_kc/view?usp=sharing)
+please found diagram in url below
+https://drive.google.com/file/d/1diEgj2YbR0TbH4Ph4ofbaARq_gW2W_kc/view?usp=sharing
 
 ## Requirements
 
