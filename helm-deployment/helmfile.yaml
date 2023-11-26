@@ -1,0 +1,16 @@
+environments:
+  dev:
+
+repositories:
+  - name: kiwigrid
+    url: https://kiwigrid.github.io
+  - name: ingress-nginx
+    url: https://kubernetes.github.io/ingress-nginx
+
+releases:
+  - name: graphite
+    namespace: graphite
+    chart: kiwigrid/graphite
+    version: 1.1.0
+    values:
+      - graphite/{{ .Environment.Name }}.yaml

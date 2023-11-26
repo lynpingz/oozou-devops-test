@@ -28,3 +28,57 @@ Project root has [`index.js`](/index.js) file. It simulates a simple app that ru
 Email us your Github repo and grant he access to `lycbrian` We expect meaningful git commits, ideally one commit per exercise with commit messages clearly communicating the intent.
 
 If you deploy it to any cloud platforms, please send us instructions & relevant IAM user credentials.
+
+## Diagram
+
+![Infra Diagram](https://drive.google.com/file/d/10ZFpf13_HGf7TTV0kkHOYgmjFqvuTquz/view?usp=sharing)
+
+## Requirements
+
+in `provider.tf` requires:
+- s3 bucket to keep tf state
+- dynamodb to keep lock files
+
+other requirements:
+- AWS access and Secret key with administrator access
+- terraform v.1.13
+- helm v3.10.3
+- helmfile v0.150.0
+
+## How to recreate AWS resources
+
+1. init terraform modules by using command
+```
+$ terraform init
+```
+2. plan to see which resources will be created
+```
+$ terraform plan
+```
+3. create AWS resources by using command
+```
+$ terraform apply
+```
+
+## How to deploy graphite
+
+Deploy using helm3 with helmfile as below
+```
+$ cd helm-deployment
+$ helmfile -e dev -l "name=graphyte" -i apply
+```
+
+## How to deploy application manually
+
+required: 
+- application image built and pushed in ECR
+```
+$ kubectl apply -f service-deployment/dev-deployment.yaml
+```
+
+## How to reach graphite dashboard
+
+since svc and ingress is not fully prepared, please reach the dashboard via port-forward 
+```
+$ kubectl port-forward graphite-0 8080:8080
+```

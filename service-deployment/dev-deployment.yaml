@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-test
+  namespace: devops-test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: devops-test
+  template:
+    metadata:
+      labels:
+        name: devops-test
+    spec:
+      containers:
+      - name: devops-test
+        image: 583144777309.dkr.ecr.ap-southeast-1.amazonaws.com/devops-test:v2
+        env:
+        - name: GRAPHITE_URL
+          value: "graphite.graphite.svc.cluster.local"
+        command: ["npm","start"]
